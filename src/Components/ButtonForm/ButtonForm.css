@@ -1,0 +1,23 @@
+.buttonForm {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 0.5em;
+}
+
+.buttonForm > button {
+  padding: 1.2em 1.5em;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  background-color: #6278f7;
+  width: fit-content;
+  font-size: 1em;
+  color: #fff;
+  transition: all 0.4s ease-in;
+}
+
+.buttonForm > button:hover {
+  color: #95ffd4;
+  cursor: pointer;
+}

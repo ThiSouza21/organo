@@ -1,38 +1,53 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: auto;
+}
+
+.wrapperContainerFormSetColaborator {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  padding: 2em 0;
 }
 
-.App-link {
-  color: #61dafb;
+.containerFormSetColaborator {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  background-color: #f6f6f6;
+  padding: 1.5em 2em;
+  border-radius: 10px;
+  width: 100%;
+  max-width: min(98em, 80%);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.containerFormSetColaborator > h3 {
+  font-size: 1.4em;
+  font-weight: 400;
+  display: flex;
+  justify-self: flex-start;
+  width: 100%;
+}
+
+.containerFormSetColaborator label {
+  font-size: clamp(0.8em, 2svw, 1.1em);
+  font-weight: 400;
+}
+
+.containerFormSetColaborator input,
+.dropDownTeam select {
+  padding: 1.5em 1em;
+  width: 100%;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  box-shadow: 2px 5px 1px rgba(0, 0, 0, 0.04);
+  background-color: #fff;
+  box-sizing: border-box;
 }
