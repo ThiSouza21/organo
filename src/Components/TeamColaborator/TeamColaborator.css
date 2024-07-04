@@ -1,8 +1,10 @@
 .teamColaborator {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-
-  height: 50svh;
+  align-items: center;
+  height: auto;
+  padding: 4em 0;
   width: 100%;
 }
 
@@ -29,4 +31,5 @@
   max-width: 100em;
   gap: 1em;
   padding: 2em;
+  flex-wrap: wrap;
 }

@@ -1,27 +1,29 @@
 import Colaborators from "../Colaborators";
 import "./TeamColaborator.css";
 
-const TeamColaborator = ({ isColaborator, teamSection }) => {
+const TeamColaborator = ({ isColaborator, teamSection, team }) => {
   return (
     <div
       className="teamColaborator"
       style={{
-        backgroundColor: isColaborator[isColaborator.length - 1].colorSecondary,
+        backgroundColor: team.colorTeam.colorSecondary,
       }}
     >
       <section className="teamColaboratorContent">
         <h3
           style={{
-            borderBottom: `2px solid ${
-              isColaborator[isColaborator.length - 1].colorTransformed
-            }`,
+            borderBottom: `2px solid ${team.colorTeam.colorPrimary}`,
           }}
         >
           {teamSection}
         </h3>
         <div className="teamColaboratorCards">
-          {isColaborator.map((colaborator) => (
-            <Colaborators key={colaborator.name} myColaborator={colaborator} />
+          {isColaborator.map((colaborator, index) => (
+            <Colaborators
+              key={`${colaborator.name}${index}`}
+              colors={team.colorTeam}
+              myColaborator={colaborator}
+            />
           ))}
         </div>
       </section>

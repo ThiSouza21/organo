@@ -7,8 +7,27 @@ const FormColaborator = (props) => {
   const [name, setName] = useState("");
   const [cargo, setCargo] = useState("");
   const [image, setImage] = useState("");
-  const [dropDownCol, setDropDownCol] = useState("");
-  const [corTeamCol, setCorTeamCol] = useState("");
+  const arrayCategoryTeams = [
+    "Progamação",
+    "Front-End",
+    "Back-End",
+    "Devops",
+    "UX e Design",
+    "Mobile",
+  ];
+  const arrayColorsTeams = [
+    "Vermelho",
+    "Verde",
+    "Azul",
+    "Laranja",
+    "Rosa",
+    "Amarelo",
+  ];
+  const initialValueDDC = arrayCategoryTeams[0];
+  const initialValueCTC = arrayColorsTeams[0];
+  const [dropDownCol, setDropDownCol] = useState(initialValueDDC);
+  const [corTeamCol, setCorTeamCol] = useState(initialValueCTC);
+  const [colorTeamExist, setColorTeamExist] = useState(false);
 
   let colorSecondary = "";
 
@@ -40,6 +59,7 @@ const FormColaborator = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const colorTransformed = handleColorTransforms(corTeamCol);
+
     props.handleSetNewColaborators({
       name,
       cargo,
@@ -52,7 +72,9 @@ const FormColaborator = (props) => {
     setName("");
     setCargo("");
     setImage("");
-    setDropDownCol("");
+    setDropDownCol(initialValueDDC);
+    setCorTeamCol(initialValueCTC);
+
     console.log("Os dados dos Cards foram enivados");
   };
 
@@ -85,32 +107,30 @@ const FormColaborator = (props) => {
       />
       <DropDownTeam
         labelName="Time"
-        arrayCategoryTeams={[
-          "Progamação",
-          "Front-End",
-          "Back-End",
-          "Devops",
-          "UX e Design",
-          "Mobile",
-        ]}
+        arrayCategoryTeams={arrayCategoryTeams}
         typeSelector="team"
-        changedInputValue={(valueInput) => setDropDownCol(valueInput)}
+        changedInputValue={(valueInput) => {
+          const isExist = props.team.some(
+            (team) => valueInput === team.teamExisting
+          );
+          if (isExist) {
+            setColorTeamExist(true);
+          } else {
+            setColorTeamExist(false);
+          }
+          return setDropDownCol(valueInput);
+        }}
         valueStateInput={dropDownCol}
       />
-      <DropDownTeam
-        labelName="Cor do Time"
-        arrayCategoryTeams={[
-          "Vermelho",
-          "Verde",
-          "Azul",
-          "Laranja",
-          "Rosa",
-          "Amarelo",
-        ]}
-        typeSelector="cor-team"
-        changedInputValue={(valueInput) => setCorTeamCol(valueInput)}
-        valueStateInput={corTeamCol}
-      />
+      {!colorTeamExist && (
+        <DropDownTeam
+          labelName="Cor do Time"
+          arrayCategoryTeams={arrayColorsTeams}
+          typeSelector="cor-team"
+          changedInputValue={(valueInput) => setCorTeamCol(valueInput)}
+          valueStateInput={corTeamCol}
+        />
+      )}
       <ButtonForm>Criar card</ButtonForm>
     </form>
   );

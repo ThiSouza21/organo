@@ -1,11 +1,11 @@
 import "./Colaborators.css";
 
-const Colaborators = ({ myColaborator }) => {
+const Colaborators = ({ myColaborator, colors }) => {
   return (
     <div className="colaborators">
       <div
         className="colaboratorsTop"
-        style={{ backgroundColor: myColaborator.colorTransformed }}
+        style={{ backgroundColor: colors.colorPrimary }}
       >
         <img src={myColaborator.image} alt={myColaborator.name} />
       </div>
