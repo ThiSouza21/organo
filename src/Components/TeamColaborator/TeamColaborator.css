@@ -1,0 +1,32 @@
+.teamColaborator {
+  display: flex;
+  justify-content: center;
+
+  height: 50svh;
+  width: 100%;
+}
+
+.teamColaborator section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  max-width: 100em;
+  text-align: center;
+}
+
+.teamColaborator section h3 {
+  display: inline-block;
+  width: fit-content;
+  padding-bottom: 0.2em;
+}
+
+.teamColaborator section .teamColaboratorCards {
+  display: flex;
+  justify-content: space-around;
+  width: min(90%, 100%);
+  max-width: 100em;
+  gap: 1em;
+  padding: 2em;
+}

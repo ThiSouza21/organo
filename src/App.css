@@ -7,11 +7,11 @@
 
 .wrapperContainerFormSetColaborator {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: auto;
-  padding: 2em 0;
 }
 
 .containerFormSetColaborator {
@@ -25,6 +25,7 @@
   border-radius: 10px;
   width: 100%;
   max-width: min(98em, 80%);
+  margin: 2em 0;
 }
 
 .containerFormSetColaborator > h3 {

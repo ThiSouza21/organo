@@ -8,10 +8,47 @@ const FormColaborator = (props) => {
   const [cargo, setCargo] = useState("");
   const [image, setImage] = useState("");
   const [dropDownCol, setDropDownCol] = useState("");
+  const [corTeamCol, setCorTeamCol] = useState("");
+
+  let colorSecondary = "";
+
+  const handleColorTransforms = (cor) => {
+    switch (cor.toUpperCase()) {
+      case "AMARELO":
+        colorSecondary = "#FFF5D9";
+        return "#FFBA05";
+      case "VERMELHO":
+        colorSecondary = "#FDE7E8";
+        return "#E06B69";
+      case "VERDE":
+        colorSecondary = "#D9F7E9";
+        return "#57C278";
+      case "AZUL":
+        colorSecondary = "#E8F8FF";
+        return "#82CFFA";
+      case "ROSA":
+        colorSecondary = "#FAE9F5";
+        return "#DB6EBF";
+      case "LARANJA":
+        colorSecondary = "#FFEEDF";
+        return "#FF8A29";
+      default:
+        return "";
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.handleSetNewColaborators([name, cargo, image, dropDownCol]);
+    const colorTransformed = handleColorTransforms(corTeamCol);
+    props.handleSetNewColaborators({
+      name,
+      cargo,
+      image,
+      dropDownCol,
+      colorTransformed,
+      colorSecondary,
+    });
+
     setName("");
     setCargo("");
     setImage("");
@@ -59,6 +96,20 @@ const FormColaborator = (props) => {
         typeSelector="team"
         changedInputValue={(valueInput) => setDropDownCol(valueInput)}
         valueStateInput={dropDownCol}
+      />
+      <DropDownTeam
+        labelName="Cor do Time"
+        arrayCategoryTeams={[
+          "Vermelho",
+          "Verde",
+          "Azul",
+          "Laranja",
+          "Rosa",
+          "Amarelo",
+        ]}
+        typeSelector="cor-team"
+        changedInputValue={(valueInput) => setCorTeamCol(valueInput)}
+        valueStateInput={corTeamCol}
       />
       <ButtonForm>Criar card</ButtonForm>
     </form>
